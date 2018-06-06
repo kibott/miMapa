@@ -1,0 +1,58 @@
+<ion-header>
+
+  <ion-navbar color="primaryDark">
+    <ion-title>Libro verde</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content none class="main-app">
+
+  <div class="title_">
+    <span>Filtro de busqueda</span>
+  </div>
+
+
+  <ion-list none class="select">
+      <ion-item color="primary">
+        <ion-label class="label">Estado</ion-label>
+        <ion-select [(ngModel)]="id_estado" (ngModelChange)="buscarMunicipios(id_estado.id_estado)">
+          <ion-option [value]="item" *ngFor="let item of estados">{{item.nombre_estado}}</ion-option>
+        </ion-select>
+      </ion-item>
+  </ion-list>
+
+  <ion-list none class="select" *ngIf="id_municipio">
+      <ion-item color="primary">
+        <ion-label class="label">Municipio</ion-label>
+        <ion-select [(ngModel)]="id_municipio" (ngModelChange)="buscarZonas(id_municipio.id_municipio)">
+          <ion-option [value]="item" *ngFor="let item of municipios">{{item.nombre_municipio}}</ion-option>
+        </ion-select>
+      </ion-item>
+  </ion-list>
+
+
+  <ion-list none class="select" *ngIf="id_zona">
+      <ion-item color="primary">
+        <ion-label class="label">Zona</ion-label>
+        <ion-select [(ngModel)]="id_zona" (ngModelChange)="buscarColonias(id_zona.id_zona)">
+          <ion-option [value]="item" *ngFor="let item of zonas">{{item.nombre_zona}}</ion-option>
+        </ion-select>
+      </ion-item>
+  </ion-list>
+
+  <ion-list none class="select" *ngIf="id_colonia">
+      <ion-item color="primary">
+        <ion-label class="label">Colonia</ion-label>
+        <ion-select [(ngModel)]="id_colonia">
+          <ion-option [value]="item" *ngFor="let item of colonias">{{item.nombre_colonia}}</ion-option>
+        </ion-select>
+      </ion-item>
+  </ion-list>
+
+  <div class="wrap-button">
+      <button ion-button padding large (click)="buscarInMap()">Continuar</button>
+  </div>
+
+</ion-content>
